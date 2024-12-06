@@ -1,0 +1,71 @@
+<div class="px-4 py-6">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+    <div class="md:col-span-2 lg:col-span-3"></div>
+    <div
+      class="col-span-1 md:col-span-8 lg:col-span-6 flex flex-col items-center"
+    >
+      <div
+        class="w-full max-w-md mx-auto p-6 bg-white text-black rounded-2xl shadow-lg relative min-h-[300px] sm:min-h-[200px]"
+      >
+        <div
+          role="tablist"
+          class="tabs tabs-boxed tabs-custom-bg tabs-lg rounded-full mb-6 flex flex-wrap justify-center sm:flex-nowrap"
+        >
+          <a
+            role="tab"
+            class="tab w-full sm:w-auto flex-grow text-center"
+            [ngClass]="{ 'tab-active': activeMode === TimerMode.Pomodoro }"
+            (click)="switchMode(TimerMode.Pomodoro)"
+            >Pomodoro</a
+          >
+          <a
+            role="tab"
+            class="tab w-full sm:w-auto flex-grow text-center"
+            [ngClass]="{ 'tab-active': activeMode === TimerMode.ShortBreak }"
+            (click)="switchMode(TimerMode.ShortBreak)"
+            >Short Break</a
+          >
+          <a
+            role="tab"
+            class="tab w-full sm:w-auto flex-grow text-center"
+            [ngClass]="{ 'tab-active': activeMode === TimerMode.LongBreak }"
+            (click)="switchMode(TimerMode.LongBreak)"
+            >Long Break</a
+          >
+        </div>
+
+        <div
+          class="text-8xl sm:text-4sm md:text-7md font-bold mb-6 text-center"
+        >
+          {{ TimerService.minutes }}:{{ TimerService.seconds | number : "2.0" }}
+        </div>
+
+        <div class="absolute bottom-6 left-6 right-6">
+          <button
+            class="absolute site-wide-purple grid grid-cols-5 items-center rounded-full shadow-gray-700 shadow-sm font-bold text-white px-4 py-2 sm:px-6 sm:py-3 text-lg sm:text-xl hover:bg-black transition duration-300 w-full"
+            (click)="toggleTimer()"
+          >
+            <span
+              class="col-span-1 flex justify-center items-center bg-white bg-opacity-25 rounded-full p-2 sm:p-0"
+            >
+              <svg
+                class="h-8 w-6 sm:h-12 sm:w-8 fill-white"
+                viewBox="0 0 448 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+                ></path>
+              </svg>
+            </span>
+            <span class="col-span-3 text-center">
+              {{ TimerService.isRunning ? "Pause" : "Start" }}
+            </span>
+            <span class="col-span-1"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="md:col-span-2 lg:col-span-3"></div>
+  </div>
+</div>

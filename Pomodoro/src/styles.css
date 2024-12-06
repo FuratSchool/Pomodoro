@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.site-wide-purple {
+  background-color: rgb(114 99 217);
+}
+.tab-active.active {
+  border-radius: 25px !important;
+  @apply rounded-full;
+}
+.tab-active:active {
+  border-radius: 25px !important;
+  @apply rounded-full;
+}
